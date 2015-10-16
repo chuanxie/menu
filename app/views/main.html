@@ -1,0 +1,17 @@
+<ul class="meals">
+    <li class="meal" ng-repeat="meal in menu.meals">
+			<div class="price-wraper">
+				<p class="price btn">{{meal.price | currency:"£"}}</p>
+			</div>
+			<img class="image" ng-src="{{meal.primaryImageUrl}}">
+			<div class="menu-panel">
+        <h4 class="name">{{meal.name}}</h4>
+				<div menu-tags class="tags" tags="meal.tags"></div>
+				<span class="expand-icon" ng-show="!expand"></span>
+      	<p class="description">{{meal.description}}</p>
+				<p class="add-order btn">Add To You Order</p>
+				<span ng-if="meal.tags">{{meal.tags.length}} options availible</span>
+			</div>
+			<div class="panel-background"></div>
+    </li>
+</ul>

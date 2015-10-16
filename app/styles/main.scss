@@ -1,0 +1,113 @@
+@import 'scales';
+@import 'typography';
+@import 'color';
+@import 'size';
+@mixin curve-border() {
+	content: url('../images/meal-card__curve.svg');
+	position: relative;
+	top: -15px;
+	left: -5px;
+}
+.meals {
+	list-style-type: none;
+	.meal {
+		border: 1px solid #e8e8e8;
+		.menu-panel {
+			&:before {
+				@include curve-border();
+			}
+			display: block;
+			position: absolute;
+			z-index: 10;
+			bottom: 5px;
+			.tags {
+				position: absolute;
+				top: -28px;
+				width: 100%;
+				text-align: center;;
+				div {
+					display: inline-block;
+					border: 0;
+					margin: 0;
+					height: 25px;
+					width: 25px;
+	    		text-align: center;
+				}
+			}
+		}
+		margin: 20px;
+		max-width: $meal-width;
+		height: $meal-height;
+		position: relative;
+		.name {
+			font-size: 1.2em;
+			position: absolute;
+			top: -75px;
+			text-align: center;
+			width: 100%;
+			max-width: 264px;
+		}
+		.image {
+			max-height: $meal-dish-height;
+			z-index: -1;
+			margin-left: -20%;
+		}
+		.description {
+			color: $text-description-color;
+			font-size: $text-content;
+			height: $text-content-height;
+			max-height: $text-content-height;
+			margin: -10px 16px 10px;
+			text-align: left;
+			overflow: hidden;
+		}
+		.add-order{
+			width: 244px;
+			color: $button-color-white;
+			padding: 3px 12px;
+			background-color: $button-color-blue;
+			margin: 0 16px;
+		}
+		.price-wraper {
+			text-align: center;
+			margin-left: -30px;
+			.price {
+				position: absolute;
+				margin-left: -20px;
+				color: $button-color-white;
+				padding: 3px 12px;
+				background-color: $button-color-blue;
+				border-radius: 0;
+			}
+		}
+		span {
+			font-size: .7em;
+    	margin: 0 19px;
+			color: $text-small-color;
+		}
+		.expand-icon{
+			background: url('../images/expand-button.svg');
+			width: 33px;
+			height: 12px;
+			display: block;
+			position: absolute;
+			right: 18px;
+    	top: 39px;
+		}
+		.panel-background {
+			opacity: .7;
+			filter:alpha(opacity=70);
+  	  -moz-opacity:0.7;
+			-webkit-opacity:0.7;
+			background-color: $button-color-white;
+			height: 180px;
+			width: 100%;
+			position: absolute;
+			bottom: 0;
+			&:before {
+				@include curve-border();
+			}
+		}
+		overflow: hidden;
+	}
+}
