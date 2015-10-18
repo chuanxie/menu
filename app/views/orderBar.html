@@ -1,3 +1,25 @@
-<div class="orderBar">
-	<div class="status btn">It's time to order some delicious food</div>
+<div class="orderBar" ng-class="{'orderPanel': show}">
+	<div class="status btn" ng-show="orders.length === 0">It's time to order some delicious food</div>
+	<div ng-show="orders.length > 0">
+		<div class="course btn disabled">{{orders.length}} main</div>
+		<div class="totalPrice btn" ng-click="show = !show">{{totalPrice | currency:"£"}}</div>
+		<div ng-show="show">
+			<h4>Your Order</h4>
+			<span class="subtitle">A Delicious Restaurant</span>
+			<span class="confirm-order btn" ng-click="show = !show">Confirm You Order</span>
+			<ul class="orderPanel">
+				<li ng-repeat="order in actualOrders()">
+					<div class="courseDetail">
+						<div class="number">
+							<div class="add" ng-click="addCurrentCourse($event, order.id, order.price)">+</div>
+							{{getOrderNumber(order.id)}}
+							<div class="remove" ng-click="removeCurrentCourse($event, order.id, order.price)">-</div>
+						</div>
+						<span class="name">{{order.name}}</span>
+						<span class= "price">{{order.price | currency:"£"}}</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
 </div>

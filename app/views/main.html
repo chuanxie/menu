@@ -10,7 +10,7 @@
 				<menu-tags class="tags" tags="meal.tags"></menu-tags>
 				<span class="expand-icon" ng-show="showEllipsis(meal.description) && !expandPanel" ng-click="expandPanel=true"></span>
       	<p class="description">{{meal.description}}</p>
-				<p class="add-order btn">Add To You Order</p>
+				<p class="add-order btn" ng-click="addOrder(meal)">Add To You Order</p>
 				<span ng-if="meal.tags">{{meal.tags.length}} options availible</span>
 			</div>
 			<div class="panel-background" ng-click="expandPanel=false"></div>

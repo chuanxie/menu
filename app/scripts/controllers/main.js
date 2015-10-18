@@ -15,7 +15,10 @@ angular.module('jstestApp')
 			if (description && description.length > 84) {
 				return true;
 			}
-		}
+		};
+		$scope.addOrder = function (meal) {
+			MenuService.addOrder(meal);
+		};
 	});
   }
 ]);

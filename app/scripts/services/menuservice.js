@@ -9,14 +9,67 @@
  */
 angular.module('jstestApp')
 	.factory('MenuService', ['$http', function ($http) {
-		var service = {
-			get: get
+		var orders = [],
+			actualOrders = [],
+			totalPrice = 0,
+			_ordersWithNumber = {};
+		return {
+			get: function () {
+				return $http.get('/data/menu.json');
+			},
+			addOrder: function (meal) {
+				orders.push(meal);
+				this._updateOrderNumber(meal);
+				this.totalPrice += parseFloat(meal.price);
+			},
+			getOrders: function () {
+				return orders;
+			},
+			getActualOrders: function () {
+				if (actualOrders && actualOrders.length > 0) {
+					actualOrders = orders.filter(function(elem, index, self) {
+						return index === self.indexOf(elem);
+					});
+				}
+				return actualOrders;
+			},
+			getTotalPrice: function () {
+				return this.totalPrice;
+			},
+			_updateOrderNumber: function (meal) {
+				if (_ordersWithNumber[meal.id]) {
+					_ordersWithNumber[meal.id] += 1;
+				} else {
+					_ordersWithNumber[meal.id] = 1;
+				}
+			},
+			addCurrentCourse: function (id, price) {
+				_ordersWithNumber[id] += 1;
+				this.totalPrice += parseFloat(price);
+				orders.push(orders[this._getOrderIndex(id)]);
+			},
+			removeCurrentCourse: function (id, price) {
+				if (_ordersWithNumber[id] > 1) {
+					_ordersWithNumber[id] -= 1;
+				} else {
+					delete _ordersWithNumber[id];
+				}
+				this.totalPrice -= parseFloat(price);
+				orders.splice(this._getOrderIndex(id), 1);
+			},
+			getOrderNumber: function (id) {
+				return _ordersWithNumber[id];
+			},
+			_getOrderIndex: function (id) {
+				var pos;
+				orders.forEach(function (order, index) {
+					if (order.id === id) {
+						pos = index;
+					}
+				});
+				return pos;
+			},
+			orders: orders,
+			totalPrice: totalPrice
 		};
-
-		return service;
-
-		function get () {
-			return $http.get('/data/menu.json');
-		}
 	}]);
-

@@ -1,16 +1,111 @@
 @import 'color';
+@mixin status-button() {
+	background-color: #d75050;
+	color: $font-color-white;
+	font-size: 11px;
+	line-height: 10px;
+	border: 1px solid #c2182d;
+	border-radius: 0;
+}
 
 .orderBar {
 	width: 100%;
+	position: fixed;
+	top: 0;
 	background-color: #c83c3c;
   padding: 10px 20px;
+	z-index: 100;
 	.status {
-		background-color: #d75050;
-		color: $font-color-white;
-		font-size: 11px;
-		line-height: 10px;
-		border: 1px solid #c2182d;
-    border-radius: 0;
+		@include status-button();
 		width: 100%;
+	}
+	.totalPrice {
+		@include status-button();
+		position: absolute;
+		right: 20px;
+	}
+	.course {
+		@include status-button();
+		cursor: default;
+	}
+	&.orderPanel {
+		height: 437px;
+		.totalPrice {
+			bottom: 20px;
+		}
+		h4 {
+			font-size: 16px;
+			color: white;
+		}
+		.subtitle {
+			font-size: 11px;
+			color: white;
+		}
+		.confirm-order {
+			background-color: $button-color-white;
+			position: absolute;
+			bottom: 20px;
+			padding: 4px 20px;
+	    width: 50%;
+	    left: 20px;
+	    border-radius: 2px;
+	    font-style: italic;
+	    font-size: 12px;
+			color: $order-panel-font-dark;
+		}
+		.course {
+			position: absolute;
+			top: 85px;
+			left: 20px;
+			padding: 0;
+			background-color: inherit;
+			border: 0;
+			color: $order-panel-font-dark;
+		}
+		ul {
+			max-height: 245px;
+			overflow-y: auto;
+			list-style-type: none;
+			margin: 45px 0 0 0;
+			padding: 0;
+			.courseDetail {
+				padding: 19px;
+				height: 50px;
+				margin-top: -1px;
+				position: relative;
+				@include status-button();
+				.number {
+					background-color: #c83c3b;
+					padding: 19px 5px;
+					margin-left: -19px;
+					position: absolute;
+					top: 0;
+					.add, .remove {
+						position: absolute;
+						cursor: pointer;
+						font-size: 10px;
+						color: $order-panel-font-dark;
+					}
+					.add {
+						top: 0px;
+				    padding: 3px;
+				    left: 2px;
+					}
+					.remove {
+						top: 31px;
+						padding: 3px 4px;
+						left: 2px;
+					}
+				}
+				.name {
+					font-size: 14px;
+					margin-left: 10px;
+				}
+				.price {
+					font-size: 14px;
+					float: right;
+				}
+			}
+		}
 	}
 }
