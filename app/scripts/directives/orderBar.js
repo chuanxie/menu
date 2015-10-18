@@ -12,11 +12,11 @@ angular.module('jstestApp')
 			restrict: 'AE',
 			replace: true,
 			templateUrl: '../views/orderBar.html',
-			link: function (scope, element) {
+			link: function (scope) {
 				scope.orders = MenuService.getOrders();
 				scope.actualOrders = function () {
 					return scope.orders.filter(function(elem, index, self) {
-					  return index === self.indexOf(elem);
+						return index === self.indexOf(elem);
 					});
 				};
 				scope.getOrderNumber = function (id) {
@@ -36,13 +36,12 @@ angular.module('jstestApp')
 				};
 
 				scope.$watch(function () {
-		    		return MenuService.totalPrice;
-		    	},
-			    function(newVal, oldVal) {
+					return MenuService.totalPrice;
+				}, function (newVal) {
 						if (newVal) {
 							scope.totalPrice = newVal;
 						}
-			    }, true);
+					}, true);
 			}
 		};
 	}]);
