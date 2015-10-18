@@ -5,7 +5,7 @@
 		"description": "This seafood risotto recipe is infused with a number of fresh herbs, imparting remarkable flavour onto the risotto rice base. With scallops, prawns and mussels to make up the risotto but you can use whatever seafood is available and you like. Served with some cheddar rolls or a small avocado salad for a delicious seafood supper.",
 		"price": "9.50",
 		"primaryImageUrl": "http://lh5.ggpht.com/ASTYH5ZbfNpA5MOxUya9MfOXw8910PpbcvkAWeMFbjurfYvbqx1qnfLU091k3UyxGXUYDn_dNOMRsmCIE2ozwRAd",
-		"tags": ["#course:main_courses", "#diet:pescetarian", "seafood"]
+		"tags": ["#course:main_courses", "#diet:pescetarian", "seafood", "spicy"]
 	},
 	{
 		"id": "6308e806b1233e111081666e82f7aac1",
@@ -113,7 +113,7 @@
 	},
 	{
 		"id": "f88cf69d16dab8feeffbaa9e31917c56",
-		"name": "Mix Starter, 10pieces (Ideal for 2)",
+		"name": "Mix Starter, 10pieces",
 		"description": "fish cake, spring rolls, satay, torpedo prawn, chicken toast",
 		"price": "11.00",
 		"primaryImageUrl": "http://lh6.ggpht.com/cwi1pSHBdZILO_SlIdVo7wwo1jog428vvkoC6MCTKbjWeCG4dIKpNHERqg5G3zFpe_oYp3n6kQLpkvDdAArhdA",

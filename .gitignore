@@ -17,5 +17,7 @@ design
 ### Node ###
 node_modules
 
+### SASS ###
+.sass-cache
 
 **/.DS_Store
