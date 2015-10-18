@@ -8,9 +8,11 @@
 		"angular": true,
 		"describe": true,
 		"expect": true,
+		"jasmine": true,
 		"beforeEach": true,
-		"afaterEach": true,
+		"afterEach": true,
 		"it": true,
+		"spyOn": true,
 		"inject": true,
 		"$": true
   },
