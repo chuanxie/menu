@@ -11,8 +11,6 @@ angular.module('jstestApp')
 		return {
 			restrict: 'AE',
 			replace: true,
-			templateUrl: '../views/orderBar.html',
-			link: function (scope) {
-			}
+			templateUrl: '../views/orderBar.html'
 		};
 	});

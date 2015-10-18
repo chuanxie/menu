@@ -11,6 +11,11 @@ angular.module('jstestApp')
 	$scope.menu = {};
 	MenuService.get('/data/menu.json').success(function (data) {
 		$scope.menu = data;
+		$scope.showEllipsis = function (description) {
+			if (description && description.length > 84) {
+				return true;
+			}
+		}
 	});
   }
 ]);

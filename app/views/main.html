@@ -1,4 +1,4 @@
-<div class="orderBar" order-bar></div>
+<order-bar></order-bar>
 <ul class="meals">
     <li class="meal" ng-repeat="meal in menu.meals" ng-class="{'expanded': expandPanel}">
 			<div class="price-wraper">
@@ -7,8 +7,8 @@
 			<img class="image" ng-src="{{meal.primaryImageUrl}}">
 			<div class="menu-panel">
         <h4 class="name" ng-click="expandPanel=false">{{meal.name}}</h4>
-				<div menu-tags class="tags" tags="meal.tags"></div>
-				<span class="expand-icon" ng-show="!expandPanel" ng-click="expandPanel=true"></span>
+				<menu-tags class="tags" tags="meal.tags"></menu-tags>
+				<span class="expand-icon" ng-show="showEllipsis(meal.description) && !expandPanel" ng-click="expandPanel=true"></span>
       	<p class="description">{{meal.description}}</p>
 				<p class="add-order btn">Add To You Order</p>
 				<span ng-if="meal.tags">{{meal.tags.length}} options availible</span>

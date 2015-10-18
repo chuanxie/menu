@@ -14,7 +14,7 @@ angular.module('jstestApp')
 			scope: {
 				tags: '='
 			},
-			templateUrl: '../views/tags.html',
+			templateUrl: '../views/menuTags.html',
 			link: function (scope) {
 				scope.validTags = scope.tags.filter(function (tag) {
 					return tag.charAt(0) !== '#';

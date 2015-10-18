@@ -1,0 +1,16 @@
+@import 'color';
+
+.orderBar {
+	width: 100%;
+	background-color: #c83c3c;
+  padding: 10px 20px;
+	.status {
+		background-color: #d75050;
+		color: $font-color-white;
+		font-size: 11px;
+		line-height: 10px;
+		border: 1px solid #c2182d;
+    border-radius: 0;
+		width: 100%;
+	}
+}

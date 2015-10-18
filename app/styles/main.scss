@@ -10,6 +10,8 @@
 }
 .meals {
 	list-style-type: none;
+	margin: 0;
+	padding: 0;
 	max-width: $meals-width;
 	.meal {
 		border: 1px solid #e8e8e8;
@@ -75,6 +77,8 @@
 			background-color: $button-color-blue;
 			margin: 0 16px;
 			font-size: 12px;
+			border-radius: 0;
+			display: block;
 		}
 		.price-wraper {
 			text-align: center;
