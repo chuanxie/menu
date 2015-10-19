@@ -27,6 +27,7 @@ module.exports = function(config) {
       'bower_components/angular-sanitize/angular-sanitize.js',
       'bower_components/angular-touch/angular-touch.js',
       'app/scripts/**/*.js',
+			'app/views/*.html',
 //      'test/mock/**/*.js',
       'test/spec/**/*.js'
     ],
@@ -59,13 +60,15 @@ module.exports = function(config) {
 			'karma-ng-html2js-preprocessor'
     ],
 	preprocessors: {
-		'../views/**/*.html': 'ng-html2js'
+		'app/views/*.html': 'ng-html2js'
 	  // source files, that you wanna generate coverage for
 	  // do not include tests or libraries
 	  // (these files will be instrumented by Istanbul)
 	  // 'app/**/*.js': ['coverage']
 	},
-
+	ngHtml2JsPreprocessor: {
+		stripPrefix: 'app/'
+	},
 	// Continuous Integration mode
     // if true, it capture browsers, run tests and exit
     singleRun: false,
