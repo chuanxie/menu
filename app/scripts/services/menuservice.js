@@ -10,7 +10,6 @@
 angular.module('jstestApp')
 	.factory('MenuService', ['$http', function ($http) {
 		var orders = [],
-			actualOrders = [],
 			totalPrice = 0,
 			_ordersWithNumber = {};
 		return {
@@ -24,14 +23,6 @@ angular.module('jstestApp')
 			},
 			getOrders: function () {
 				return orders;
-			},
-			getActualOrders: function () {
-				if (actualOrders && actualOrders.length > 0) {
-					actualOrders = orders.filter(function(elem, index, self) {
-						return index === self.indexOf(elem);
-					});
-				}
-				return actualOrders;
 			},
 			getTotalPrice: function () {
 				return this.totalPrice;

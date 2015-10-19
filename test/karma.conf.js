@@ -46,8 +46,8 @@ module.exports = function(config) {
     // - PhantomJS
     // - IE (only Windows)
     browsers: [
-      // 'PhantomJS'
-			'Chrome'
+      'PhantomJS'
+			// 'Chrome'
     ],
 
     // Which plugins to enable
@@ -55,13 +55,15 @@ module.exports = function(config) {
 			'karma-phantomjs-launcher',
       'karma-chrome-launcher',
       'karma-jasmine',
-	  	'karma-coverage'
+	  	'karma-coverage',
+			'karma-ng-html2js-preprocessor'
     ],
 	preprocessors: {
+		'../views/**/*.html': 'ng-html2js'
 	  // source files, that you wanna generate coverage for
 	  // do not include tests or libraries
 	  // (these files will be instrumented by Istanbul)
-	  'app/**/*.js': ['coverage']
+	  // 'app/**/*.js': ['coverage']
 	},
 
 	// Continuous Integration mode

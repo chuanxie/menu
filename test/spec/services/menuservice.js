@@ -37,4 +37,57 @@ describe('Service: MenuService', function () {
 		});
 		$httpBackend.flush();
 	});
+
+	it('should update orders', function () {
+		var meal = {'id': 1, 'name': 'foo', 'price': 9.5};
+
+		MenuService.addOrder(meal);
+		expect(MenuService.orders.length).toBe(1);
+		MenuService.getOrders().forEach(function (order) {
+			expect(order.id).toBe(meal.id);
+		});
+	});
+
+	it('should return the total price of orders', function () {
+		var meal1 = {'id': 1, 'name': 'foo', 'price': 9.5},
+			meal2 = {'id': 1, 'name': 'foo', 'price': 8.5};
+
+		MenuService.addOrder(meal1);
+		MenuService.addOrder(meal2);
+		expect(MenuService.orders.length).toBe(2);
+		expect(MenuService.getTotalPrice()).toBe(meal1.price + meal2.price);
+	});
+
+	it('should add the number current course', function () {
+		var meal1 = {'id': 1, 'name': 'foo', 'price': 9.5},
+			meal2 = {'id': 1, 'name': 'foo', 'price': 8.5};
+
+		MenuService.addOrder(meal1);
+		MenuService.addOrder(meal2);
+		MenuService.addCurrentCourse(meal1.id, meal1.price);
+		expect(MenuService.orders.length).toBe(3);
+		expect(MenuService.getTotalPrice()).toBe(meal1.price * 2 + meal2.price);
+	});
+
+	it('should remove the number current course if it has more than one course', function () {
+		var meal1 = {'id': 1, 'name': 'foo', 'price': 9.5},
+			meal2 = {'id': 1, 'name': 'foo', 'price': 8.5};
+
+		MenuService.addOrder(meal1);
+		MenuService.addOrder(meal1);
+		MenuService.addOrder(meal2);
+		MenuService.removeCurrentCourse(meal1.id, meal1.price);
+		expect(MenuService.orders.length).toBe(2);
+		expect(MenuService.getTotalPrice()).toBe(meal1.price + meal2.price);
+	});
+
+	it('should remove the number current course', function () {
+		var meal1 = {'id': 1, 'name': 'foo', 'price': 9.5};
+
+		MenuService.addOrder(meal1);
+		MenuService.removeCurrentCourse(meal1.id, meal1.price);
+		expect(MenuService.orders.length).toBe(0);
+		expect(MenuService.getOrderNumber(meal1.id)).toBeUndefined();
+		expect(MenuService.getTotalPrice()).toBe(0);
+	});
 });
